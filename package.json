@@ -2,7 +2,7 @@
   "name": "RzxBot",
   "version": "1.0.0",
   "description": "Simple whatsapp bot with baileys multi device.",
-  "main": "lib/socket.js",
+  "main": "lib/message/socket.js",
   "directories": {
     "lib": "lib"
   },
