@@ -15,7 +15,7 @@ const resCountDown = `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Deti
 module.exports = {
     name: "help",
     alias: ["h", "cmd", "menu"],
-    category: "general",
+    category: "main",
     async exec(msg, sock, args) {
         if (args[0]) {
             const data = [];
