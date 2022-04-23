@@ -48,7 +48,7 @@ Example From Command : [`./command/main/help.js`](https://github.com/RzxGamz/WaB
 - [√] Command terpisah
 
 ## Request or report
-Untuk request dan report bisa chat saya disini [Whatsapp](https://wa.me/628)
+Untuk request dan report bisa chat saya disini [Whatsapp](https://wa.me/6283894905341)
 
 ## Installation
 
