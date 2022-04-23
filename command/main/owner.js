@@ -11,13 +11,13 @@ module.exports = {
             + 'TEL;type=CELL;type=VOICE;waid=1 551 786 8060:+1 551 786 8060\n' // WhatsApp ID + phone number
             + 'END:VCARD'
       sock.sendMessage(
-      id,
+      msg.from,
         { 
            contacts: { 
             displayName: 'Jeff', 
             contacts: [{ vcard }] 
            }
-        }
+        }, { quoted: msg }
       )
    }
 }
