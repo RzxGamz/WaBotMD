@@ -51,7 +51,7 @@ Example From Command : [`./command/main/help.js`](https://github.com/RzxGamz/WaB
 - [√] Command terpisah
 
 ## Request or report
-Untuk request dan report bisa chat saya disini [Whatsapp](https://wa.me/6283894905341)
+Untuk request dan report bisa chat saya disini [Whatsapp](https://wa.me/6283879635336)
 
 ## Installation
 
@@ -73,14 +73,14 @@ npm install
 # atau
 yarn install
 
-### Start Bot
-Start and Scan QR<br />
-
-```bash
+# start bot
 npm start
+# atau
+node .
 ```
+
 
 # Thanks To
 
-- [`Faiz Bastomi`](https://github.com/FaizBastomi) - Base Ori
-- [`RzxGamz`](https://github.com/RzxGamz) - Copy Base
+- [`Faiz Bastomi`](https://github.com/FaizBastomi)  Base Ori
+- [`RzxGamz`](https://github.com/RzxGamz)  Copy Base
