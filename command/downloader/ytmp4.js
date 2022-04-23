@@ -1,4 +1,4 @@
-const { ytv } = require("../../lib/scrape/y2mate")
+const { ytIdRegex, ytv } = require("../../lib/scrape/y2mate")
 
 module.exports = {
    name: 'ytmp4',
@@ -7,6 +7,7 @@ module.exports = {
    desc: 'Download video youtube',
    use: '<link youtube>',
    async exec(msg, sock, args) {
+      if (!ytIdRegex.test(msg.body)) throw "Pastikan link yang kamu input adalah link youtube!"
       try {
         const res = await ytv(args.join(" "))
         const { dl_link, thumb, title, filesizeF, filesize } = res
