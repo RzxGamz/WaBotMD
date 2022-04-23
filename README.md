@@ -23,7 +23,7 @@ Options pada command, yang akan mempermudah kamu untuk membuat/menambahkan fitur
    desc: <String>, // Ex: "Menu adalah command"
    use: <String>,  // Ex: "<teks>"
    category: <String>, // Ex: "main"
-   [asyncFunction]
+   exec: [AsyncFunction: exec]
 }
 ```
 
@@ -36,6 +36,9 @@ Example From Command : [`./command/main/help.js`](https://github.com/RzxGamz/WaB
   alias: ["h","menu","cmd"],
   desc: "menampilkan menu",
   category: "main"
+  async exec(msg) {
+     msg.reply("Hello World!")
+  }
 }
 ```
 
