@@ -7,9 +7,9 @@ module.exports = {
    desc: 'Menambah member to group',
    use: '<number phone>\nExample: /add 628xxxxx',
    async exec(msg, sock, args) {
-      if (!msg.isGroup) throw djs.mess_group
-      if (!msg.isAdmins) throw djs.mess_admin
-      if (!msg.isBotAdmins) throw djs.mess_badmin
+      if (!msg.isGroup) throw "Maaf command ini khusus di dalam group!"
+      if (!msg.isAdmins) throw "Maaf command ini khusus admin group!"
+      if (!msg.isBotAdmins) throw "Bot belum menjadi admin!"
       if (args[0].startsWith("0")) throw "Masukkan kode negara"
       if (args[0]) {
       // id & people to add to the group (will throw error if it fails)
