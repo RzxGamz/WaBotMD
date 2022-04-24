@@ -7,7 +7,7 @@ module.exports = {
    desc: 'Download audio youtube',
    use: '<link youtube> <resolusi>',
    async exec(msg, sock, args) {
-      if (!ytIdRegex.test(args[0])) throw "Pastikan link yang kamu input adalah link youtube!"
+      if (!ytIdRegex.test(args[0])) return msg.reply("Pastikan link yang kamu input adalah link youtube!")
       try {
         const resol = args[1] ? args[1] : "128kbps"
         const res = await yta(args[0], resol)
