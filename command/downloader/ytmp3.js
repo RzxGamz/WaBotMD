@@ -13,7 +13,10 @@ module.exports = {
         const res = await yta(args[0], resol)
         const { dl_link, thumb, title, filesizeF, filesize } = res
         sock.sendFileFromUrl(msg.from, thumb, `Youtube Audio\n\n${title}\n${filesize}`)
-        sock.sendMessage(msg.from, { audio: { url: dl_link }, ptt: false })
+        sock.sendMessage(
+        msg.from, 
+        { audio: { url: dl_link }, mimetype: 'audio/mp4', contextInfo: { externalAdReply: { title: title, body: 'Play audio youtube', thumbnailUrl: thumb, mediaType: 2, mediaUrl: args[0] }}}
+        )
       } catch (e) {
           msg.reply(e.message)
       }
