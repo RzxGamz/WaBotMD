@@ -10,7 +10,14 @@ module.exports = {
     if (!args.join(' ')) return msg.reply('Masukkan query!')
     try {
     const res = bs.googleIt(args.join(' '))
-    msg.replyAd(String(res.articles), 'Google Search', 'Google search on WhatsApp')
+    let txt = ''
+    for (let g of res.articles) {
+      txt += `Header : ${g.header}\n`
+      txt += `Title : ${g.title}\n`
+      txt += `Link : ${g.url}\n`
+      txt += `Desc : ${g.description}\n\n`
+    }
+    msg.replyAd(txt, 'Google Search', 'Google search on WhatsApp')
     } catch (e) {
       msg.reply(e.message)
     }
