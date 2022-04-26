@@ -9,7 +9,7 @@ module.exports = {
   async exec(msg, sock, args) {
     if (!args.join(' ')) return msg.reply('Masukkan query!')
     try {
-      const res = bs.pinterest(args.join(' '))
+      const res = await bs.pinterest(args.join(' '))
       const result = res[Math.floor(Math.random() * res.length)]
       sock.sendMessage(msg.from, { image: { url: result }, caption: result }, { quoted: msg })
     } catch (e) {
