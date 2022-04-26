@@ -9,13 +9,13 @@ module.exports = {
   async exec(msg, sock, args) {
     if (!args.join(' ')) return msg.reply('Masukkan query!')
     try {
-    const res = bs.googleIt(args.join(' '))
+    const res = await bs.googleIt(args.join(' '))
     let txt = ''
-    for (let g of res.articles) {
-      txt += `Header : ${g.header}\n`
-      txt += `Title : ${g.title}\n`
-      txt += `Link : ${g.url}\n`
-      txt += `Desc : ${g.description}\n\n`
+    for (let g of res) {
+      txt += `Header : ${g.articles.header}\n`
+      txt += `Title : ${g.articles.title}\n`
+      txt += `Link : ${g.articles.url}\n`
+      txt += `Desc : ${g.articles.description}\n\n`
     }
     msg.replyAd(txt, 'Google Search', 'Google search on WhatsApp')
     } catch (e) {
