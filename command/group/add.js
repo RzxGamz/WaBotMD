@@ -7,10 +7,16 @@ module.exports = {
    desc: 'Menambah member to group',
    use: '<number phone>\nExample: /add 628xxxxx',
    async exec(msg, sock, args) {
-      if (!msg.isGroup) throw "Maaf command ini khusus di dalam group!"
-      if (!msg.isAdmins) throw "Maaf command ini khusus admin group!"
-      if (!msg.isBotAdmins) throw "Bot belum menjadi admin!"
-      if (args[0].startsWith("0")) throw "Masukkan kode negara"
+      const groupMetadata = msg.isGroup ? sock.groupMetadata(msg.from) : ''
+      const groupMembers = msg.isGroup ? groupMetadata.participants : ''
+      const groupAdmins = msg.isGroup ? getGroupAdmins(groupMembers) : ''
+      const isAdmins = groupAdmins.includes(msg.sender);
+      const isBotAdmins = groupAdmins.includes(sock.user.id.split(':')[0]+'@s.whatsapp.net');
+
+      if (!msg.isGroup) return msg.reply("Maaf command ini khusus di dalam group!")
+      if (!isAdmins) return msg.reply("Maaf command ini khusus admin group!")
+      if (!isBotAdmins) return msg.reply("Bot belum menjadi admin!")
+
       if (args[0]) {
       // id & people to add to the group (will throw error if it fails)
       await sock.groupParticipantsUpdate(
@@ -22,8 +28,10 @@ module.exports = {
       await sock.groupParticipantsUpdate(
         msg.from, 
         [msg.quoted.participant],
-        "remove" // replace this parameter with "remove", "demote" or "promote"
+        "add" // replace this parameter with "remove", "demote" or "promote"
       )
+      } else {
+          msg.reply("Masukkan nomor atau reply pesan!")
       }
    }
 }
