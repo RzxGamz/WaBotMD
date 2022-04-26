@@ -10,7 +10,7 @@ module.exports = {
      if (!args.join(' ') && !/^https?:\/\//.test(args.join(' '))) return msg.reply("Masukkan link!")
         try {
           const res = await fetchJson(`https://cutt.ly/api/api.php?key=341578d2de946244680120edd9d03f068dd38&short=${args.join(' ')}`)
-	  msg.reply(JSON.stringify(res, null, 2))
+	  msg.replyAd(JSON.stringify(res, null, 2), 'Cuttly Shortlink', 'Shortlink cuttly on WhatsApp')
 	} catch (e) {
 	    msg.reply(e.message)
       }
