@@ -7,8 +7,9 @@ module.exports = {
   desc: 'Download video tiktok',
   use: '<link tiktok>\n\nDownload video :\n/tiktok <link> --video\n\nDownload audio :\n/tiktok <link> --audio',
   async exec(msg, sock, args) {
-    if (!args[0].match(/(?:https:?\/{2})?(?:w{3}|vm|vt|t)?\.?tiktok.com\/([^\s&]+)/gi)) return msg.reply('Masukkan link tiktok!')
+    if (!/(?:https:?\/{2})?(?:w{3}|vm|vt|t)?\.?tiktok.com\/([^\s&]+)/gi.test(args[0])) return msg.reply('Masukkan link tiktok!')
     try {
+      await msg.reply('*Loading . . .*')
       const opt = args[1]
       const res = await tiktokdlv3(args[0])
       const capt = JSON.stringify(res, null, 2)
