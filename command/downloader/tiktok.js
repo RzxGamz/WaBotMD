@@ -1,4 +1,5 @@
 const { tiktokdl, tiktokdlv2, tiktokdlv3 } = require('@bochilteam/scraper')
+const { ttdownloader } = require('hxz-api')
 
 module.exports = {
   name: 'tiktok',
@@ -21,8 +22,8 @@ module.exports = {
           await sock.sendFileFromUrl(msg.from, res.video.no_watermark, capt, msg)
           break
         case '--audio':
-          let resm = await tiktokdlv3(args[0])
-          await sock.sendMessage(msg.from, { audio: { url: resm.music }, mimetype: 'audio/mp4' }, { quoted: msg })
+          let resm = await ttdownloader(args[0])
+          await sock.sendMessage(msg.from, { audio: { url: resm.audio }, mimetype: 'audio/mp4' }, { quoted: msg })
           break
         default:
           res = await tiktokdl(args[0])
