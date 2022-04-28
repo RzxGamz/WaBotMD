@@ -7,7 +7,7 @@ module.exports = {
   desc: 'Download video or photo instagram',
   use: '<link instagram>',
   async exec(msg, sock, args) {
-    if (!/https?:\/\//.test(args[0]) && !args[0].includes('instagram')) return msg.reply('Masukkan link instagram!')
+    if (!args[0].includes('instagram')) return msg.reply('Masukkan link instagram!')
     try {
       await msg.reply('*Loading . . .*')
       const res = await igdl(args[0])
