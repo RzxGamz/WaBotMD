@@ -12,8 +12,10 @@ module.exports = {
 	if (!args[0]) return msg.reply('Masukkan link mediafire!')
 	mediafireDl(args[0]).then(async (res) => {
 		await msg.replyAd(JSON.stringify(res, null, 2), 'Mediafire Downloader', 'Download Mediafire on WhatsApp')
+                let sizex = res.size.replace("MB", "")
+                if (sizex > 500) return msg.reply("Maaf, ukuran file ini melebihi batas download bot kami!")
 		let mimetype = await mime.lookup(res.link)
-		await sock.sendMessage(msg.from, { document: { url: res.link }, filename: res.title, mimetype }, { quoted: msg })
+		await sock.sendMessage(msg.from, { document: { url: res.link }, mimetype }, { quoted: msg, filename: res.title })
 	}).catch(e => msg.reply(String(e)))
    }
 }
