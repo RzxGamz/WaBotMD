@@ -18,7 +18,7 @@ module.exports = {
       switch (opt) {
         case '--video':
           res = await tiktokdl(args[0])
-          capt = JSON.stringify(res, null, 2)
+          capt = `*TIKTOK DOWNLOADER*\n\n${String.fromCharCode(8206).repeat(4001)}`+JSON.stringify(res, null, 2)
           await sock.sendFileFromUrl(msg.from, res.video.no_watermark, capt, msg)
           break
         case '--audio':
@@ -27,7 +27,7 @@ module.exports = {
           break
         default:
           res = await tiktokdl(args[0])
-          capt = JSON.stringify(res, null, 2)
+          capt = `*TIKTOK DOWNLOADER*\n\n${String.fromCharCode(8206).repeat(4001)}`+JSON.stringify(res, null, 2)
           await sock.sendFileFromUrl(msg.from, res.video.no_watermark, capt, msg)
       }
     } catch (e) {
