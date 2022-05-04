@@ -11,7 +11,7 @@ module.exports = {
     try {
       await msg.reply('*Loading . . .*')
       const res = await igdl(args[0])
-      const capt = JSON.stringify(res.user, null, 2)
+      const capt = `*INSTAGRAM DOWNLOADER*\n\n${String.fromCharCode(8206).repeat(4001)}`+JSON.stringify(res, null, 2)
       for (let i = 0; i < res.medias.length; i++) await sock.sendFileFromUrl(msg.from, res.medias[i].url, capt, msg)
     } catch (e) {
       msg.reply(String(e))
