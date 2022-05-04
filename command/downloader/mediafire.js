@@ -15,7 +15,7 @@ module.exports = {
                 let sizex = res.size.replace("MB", "")
                 if (sizex > 500) return msg.reply("Maaf, ukuran file ini melebihi batas download bot kami!")
 		let mimetype = await mime.lookup(res.link)
-		await sock.sendMessage(msg.from, { document: { url: res.link }, mimetype }, { quoted: msg, filename: res.title })
+		await sock.sendMessage(msg.from, { document: { url: res.link }, mimetype, fileName: res.title }, { quoted: msg })
 	}).catch(e => msg.reply(String(e)))
    }
 }
