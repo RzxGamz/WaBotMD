@@ -3,7 +3,7 @@ const { sticker } = require("../../lib/function/convert");
 module.exports = {
     name: "sticker",
     alias: ['s', 'stick', 'stik', 'stiker', 'stickergif', 'stikergif', 'gifstiker', 'gifsticker'],
-    category: "convert",
+    category: "sticker",
     desc: "Create a sticker from image or video",
     async exec(msg, sock) {
         const { quoted, from, type } = msg;
