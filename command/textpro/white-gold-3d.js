@@ -6,8 +6,8 @@ module.exports = {
    desc: 'Membuat teks ke image',
    use: '<text>',
    async exec(msg, sock, args) {
-      if (!args[0]) return msg.reply('Masukkan text!')
-      const res = await textpro("https://textpro.me/elegant-white-gold-3d-text-effect-online-free-1070.html", `${args[0]}`)
+      if (!args.join(' ')) return msg.reply('Masukkan text!')
+      const res = await textpro("https://textpro.me/elegant-white-gold-3d-text-effect-online-free-1070.html", `${args.join(' ')}`)
       await sock.sendMessage(msg.from, { image: { url: res }, caption: "*TEXT PRO - WHITE GOLD 3D*" }, { quoted: msg })
    }
 }
