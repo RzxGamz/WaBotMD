@@ -11,7 +11,7 @@ module.exports = {
 	category: "sticker",
 	desc: "Create sticker with author and packname",
 	use: "packname|authorname",
-	async exec({ msg, arg, sock }) {
+	async exec(msg, sock, args, arg) {
 		const { quoted, from, sender, type } = msg;
 		let packname = arg.split("|")[0] || "";
 		let author = arg.split("|")[1] || "© 2022 RzxBot";
