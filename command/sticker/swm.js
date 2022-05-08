@@ -55,12 +55,12 @@ module.exports = {
 			} else if (isQStick) {
 				const name_1 = getRandom(".webp");
 				ex.create(packname.toString(), author.toString(), sender);
-				await quoted.download(`./temp/${name_1}`);
-				run(`webpmux -set exif ./temp/${sender}.exif ./temp/${name_1} -o ./temp/${name_1}`, async function (e) {
-					if (e) return (await msg.reply("Error")) && fs.unlinkSync(`./temp/${name_1}`);
-					await sock.sendMessage(from, { sticker: { url: `./temp/${name_1}` } }, { quoted: msg });
-					fs.unlinkSync(`./temp/${name_1}`);
-					fs.unlinkSync(`./temp/${sender}.exif`);
+				await quoted.download(`./lib/temp/${name_1}`);
+				run(`webpmux -set exif ./lib/temp/${sender}.exif ./lib/temp/${name_1} -o ./lib/temp/${name_1}`, async function (e) {
+					if (e) return (await msg.reply("Error")) && fs.unlinkSync(`./lib/temp/${name_1}`);
+					await sock.sendMessage(from, { sticker: { url: `./lib/temp/${name_1}` } }, { quoted: msg });
+					fs.unlinkSync(`./lib/temp/${name_1}`);
+					fs.unlinkSync(`./lib/temp/${sender}.exif`);
 				});
 			} else if (
 				isQDoc &&
