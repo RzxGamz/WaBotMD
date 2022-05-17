@@ -24,5 +24,5 @@ RUN pwd
 RUN ls
 
 EXPOSE 5000
-CMD ["npm","lib/message/socket.js"] #run biasa
+CMD ["node","lib/message/socket.js"] #run biasa
 #CMD ["node","index.js", "--db","link Monggodb url"]
