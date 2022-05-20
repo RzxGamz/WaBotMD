@@ -78,10 +78,10 @@ module.exports = {
             await sock.sendMessage(msg.from, {
                 text: str,
                 footer: "WhatsApp Bot",
-                templateButtons: [
+                /*templateButtons: [
                     { urlButton: { displayText: "Source Code", url: "https://github.com/RzxGamz/WaBotMD" } }
-                ]
-            }, { contextInfo: { 
+                ],*/
+            contextInfo: { 
     mentionedJid: [msg.sender],
     externalAdReply: {
     mediaUrl: `https://instagram.com`,
@@ -92,7 +92,8 @@ module.exports = {
     thumbnail: fs.readFileSync('././lib/media/program.jpg'),
     sourceUrl: `https://chat.whatsapp.com/FM1Q7xQJYN5HDSrXvQqMEn`,
     showAdAttribution: true
-     }}})
+     }}
+           })
         }
     }
 }
