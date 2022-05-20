@@ -67,7 +67,7 @@ module.exports = {
                     category[info.category].push(info);
                 }
             }
-            let str = `Hello, ${pushName === undefined ? sender.split("@")[0] : pushName}\n${ucap}\n\n*Upload* ${cekBandwith.upload}\n*Download* ${cekBandwith.download}\n\n`;
+            let str = `Hello, ${pushName === undefined ? sender.split("@")[0] : pushName}\n${ucap}\n\n*Upload* ${cekBandwidth.upload}\n*Download* ${cekBandwidth.download}\n\n`;
             const keys = Object.keys(category);
             for (const key of keys) {
             	let anu = key[0].toUpperCase()
