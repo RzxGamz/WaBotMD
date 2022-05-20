@@ -1,5 +1,6 @@
 const djs = require("@discordjs/collection")
 const moment = require("moment-timezone")
+const { sizeFormatter } = require("human-readable")
 const fs = require("fs")
 const ucap = "Selamat "+ moment(Date.now()).tz('Asia/Jakarta').locale('id').format('a')
 
@@ -11,6 +12,27 @@ const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 const resCountDown = `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`
+
+let formatd = sizeFormatter({
+std: "JEDEC", // 'SI' (default) | 'IEC' | 'JEDEC'
+decimalPlaces: 2,
+keepTrailingZeroes: false,
+render: (literal, symbol) => `${literal} ${symbol}B`,
+});
+async function cekBandwidth() {
+var data = require("node-os-utils")
+data = await data.netstat.stats()
+let ind = 0
+let out = 0
+for (let i of data) {
+ind = ind + i.inputBytes
+out = out + i.outputBytes
+}
+return {
+download: formatd(ind),
+upload: formatd(out)
+}
+}
 
 module.exports = {
     name: "help",
@@ -45,7 +67,7 @@ module.exports = {
                     category[info.category].push(info);
                 }
             }
-            let str = `Hello, ${pushName === undefined ? sender.split("@")[0] : pushName}\n${ucap}\n\n*Count Down Hari Raya Idul Fitri 2022*\n${resCountDown}\n\n`;
+            let str = `Hello, ${pushName === undefined ? sender.split("@")[0] : pushName}\n${ucap}\n\n*Upload* ${cekBandwith.upload}\n*Download* ${cekBandwith.download}\n\n`;
             const keys = Object.keys(category);
             for (const key of keys) {
             	let anu = key[0].toUpperCase()
@@ -56,9 +78,9 @@ module.exports = {
             await sock.sendMessage(msg.from, {
                 text: str,
                 footer: "WhatsApp Bot",
-                /*templateButtons: [
+                templateButtons: [
                     { urlButton: { displayText: "Source Code", url: "https://github.com/RzxGamz/WaBotMD" } }
-                ]*/
+                ]
                 contextInfo: { 
     mentionedJid: [msg.sender],
     externalAdReply: {
