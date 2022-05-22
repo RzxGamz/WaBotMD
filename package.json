@@ -29,6 +29,7 @@
     "form-data": "^4.0.0",
     "fs": "0.0.1-security",
     "hxz-api": "^1.0.1",
+    "javascript-obfuscator": "^4.0.0",
     "jsdom": "19.0.0",
     "kotz-api": "^1.0.0",
     "moment": "^2.29.1",
