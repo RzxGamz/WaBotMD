@@ -13,12 +13,13 @@ const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 const resCountDown = `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`
 
-let formatd = sizeFormatter({
+const formatd = sizeFormatter({
 std: "JEDEC", // 'SI' (default) | 'IEC' | 'JEDEC'
 decimalPlaces: 2,
 keepTrailingZeroes: false,
 render: (literal, symbol) => `${literal} ${symbol}B`,
-});
+})
+
 async function cekBandwidth() {
 var data = require("node-os-utils")
 data = await data.netstat.stats()
@@ -67,7 +68,8 @@ module.exports = {
                     category[info.category].push(info);
                 }
             }
-            let str = `Hello, ${pushName === undefined ? sender.split("@")[0] : pushName}\n${ucap}\n\n*Upload* ${cekBandwidth.upload}\n*Download* ${cekBandwidth.download}\n\n`;
+            let cB = await cekBandwidth()
+            let str = `Hello, ${pushName === undefined ? sender.split("@")[0] : pushName}\n${ucap}\n\n*Upload* ${cB.upload}\n*Download* ${cB.download}\n\n`;
             const keys = Object.keys(category);
             for (const key of keys) {
             	let anu = key[0].toUpperCase()
