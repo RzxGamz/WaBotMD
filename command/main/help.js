@@ -71,7 +71,7 @@ module.exports = {
                 }
             }
             let cB = await cekBandwidth()
-            let str = `Hello, ${pushName === undefined ? sender.split("@")[0] : pushName}\n${ucap}\n\n*Upload* ${cB.upload}\n*Download* ${cB.download}\n\n`;
+            let str = `*Hello, ${pushName === undefined ? sender.split("@")[0] : pushName}*\n*${ucap}*\n\n*STATISTIC*\n*Upload ${cB.upload}*\n*Download ${cB.download}*\n\n`;
             const keys = Object.keys(category);
             for (const key of keys) {
             	let anu = key[0].toUpperCase()
@@ -82,10 +82,7 @@ module.exports = {
             /*await sock.sendMessage(msg.from, {
                 text: str,
                 footer: "WhatsApp Bot",
-                /*templateButtons: [
-                    { urlButton: { displayText: "Source Code", url: "https://github.com/RzxGamz/WaBotMD" } }
-                ],*/
-            contextInfo: { 
+                contextInfo: { 
     mentionedJid: [msg.sender],
     externalAdReply: {
     mediaUrl: `https://instagram.com`,
@@ -99,7 +96,7 @@ module.exports = {
      }}
            })*/
            let buffer = reSize(fs.readFileSync('././lib/media/gta.jpg'), 200, 200)
-           await sock.sendMessage(msg.from, { caption: str, footer: "Rzx Bot", location: { jpegThumbnail: buffer }, buttons: [{ buttonId: ".script", buttonText: { displayText: "Source Code" }, type: 1 }], mentions: [msg.sender] })
+           await sock.sendMessage(msg.from, { caption: str, footer: "Rzx Bot", location: { jpegThumbnail: buffer }, buttons: [{ buttonId: ".script", buttonText: { displayText: "Source Code" }, type: 1 }], headerType: 'LOCATION', mentions: [msg.sender] })
         }
     }
 }
