@@ -96,7 +96,7 @@ module.exports = {
     showAdAttribution: true
      }}
            })*/
-           let buffer = reSize(fs.readFileSync('././lib/media/gta.jpg'), 200, 200)
+           let buffer = await reSize(fs.readFileSync('././lib/media/gta.jpg'), 200, 200)
            await sock.sendMessage(msg.from, { caption: str, footer: "Rzx Bot", location: { jpegThumbnail: buffer }, buttons: [{ buttonId: ".script", buttonText: { displayText: "Source Code" }, type: 1 }], headerType: 'LOCATION', mentions: [msg.sender] })
         }
     }
