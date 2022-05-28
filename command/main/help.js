@@ -2,6 +2,7 @@ const djs = require("@discordjs/collection")
 const moment = require("moment-timezone")
 const { sizeFormatter } = require("human-readable")
 const fs = require("fs")
+const jimp = require("jimp")
 const ucap = "Selamat "+ moment(Date.now()).tz('Asia/Jakarta').locale('id').format('a')
 
 const countDownDate = new Date("May, 02, 2022 04:15:00").getTime();
