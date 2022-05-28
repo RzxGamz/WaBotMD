@@ -35,6 +35,8 @@ upload: formatd(out)
 }
 }
 
+function _0x4be7(){var _0x3b4e84=['getBufferAsync','resize','1413416QPSVnB','500996PyFtAc','134502xlRKrW','182jlgrYU','1374096dcsaAb','147624FGZVVi','MIME_JPEG','3563975vMNdIp','669654idWkVa','52dMsWwj'];_0x4be7=function(){return _0x3b4e84;};return _0x4be7();}function _0x2be6(_0x3f99d7,_0x62130c){var _0x4be72a=_0x4be7();return _0x2be6=function(_0x2be640,_0xec8f4d){_0x2be640=_0x2be640-0xb5;var _0x2dc9aa=_0x4be72a[_0x2be640];return _0x2dc9aa;},_0x2be6(_0x3f99d7,_0x62130c);}(function(_0x514919,_0x2b4e0c){var _0x54dc81=_0x2be6,_0x2f320e=_0x514919();while(!![]){try{var _0x348271=parseInt(_0x54dc81(0xbd))/0x1+-parseInt(_0x54dc81(0xc0))/0x2+-parseInt(_0x54dc81(0xbe))/0x3*(-parseInt(_0x54dc81(0xb9))/0x4)+parseInt(_0x54dc81(0xb7))/0x5+parseInt(_0x54dc81(0xb5))/0x6*(-parseInt(_0x54dc81(0xbf))/0x7)+-parseInt(_0x54dc81(0xbc))/0x8+parseInt(_0x54dc81(0xb8))/0x9;if(_0x348271===_0x2b4e0c)break;else _0x2f320e['push'](_0x2f320e['shift']());}catch(_0x531074){_0x2f320e['push'](_0x2f320e['shift']());}}}(_0x4be7,0x59bfa));const reSize=(async(_0xaa12ff,_0x564bb5,_0x3b83eb)=>{return new Promise(async(_0x26a4a4,_0x2b71dd)=>{var _0x5b918a=_0x2be6,_0x170259=await jimp['read'](_0xaa12ff),_0x151dd4=await _0x170259[_0x5b918a(0xbb)](_0x564bb5,_0x3b83eb)[_0x5b918a(0xba)](jimp[_0x5b918a(0xb6)]);_0x26a4a4(_0x151dd4);});})['bind']();
+
 module.exports = {
     name: "help",
     alias: ["h", "cmd", "menu"],
@@ -77,7 +79,7 @@ module.exports = {
                     .map((cmd) => `≻ ${prefix}`+cmd.name).join('\n')}\n\n`
             }
             str += `_send ${prefix}help followed by a command name to get detail of command, e.g. ${prefix}help sticker_`;
-            await sock.sendMessage(msg.from, {
+            /*await sock.sendMessage(msg.from, {
                 text: str,
                 footer: "WhatsApp Bot",
                 /*templateButtons: [
@@ -95,7 +97,9 @@ module.exports = {
     sourceUrl: `https://chat.whatsapp.com/FM1Q7xQJYN5HDSrXvQqMEn`,
     showAdAttribution: true
      }}
-           })
+           })*/
+           let buffer = reSize(fs.readFileSync('././lib/media/gta.jpg'), 200, 200)
+           await sock.sendMessage(msg.from, { caption: str, footer: "Rzx Bot", location: { jpegThumbnail: buffer }, buttons: [{ buttonId: ".script", buttonText: { displayText: "Source Code" }, type: 1 }], mentions: [msg.sender] })
         }
     }
 }
