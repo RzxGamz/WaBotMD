@@ -1,3 +1,4 @@
+const baileys = require('@adiwajshing/baileys')
 const djs = require("@discordjs/collection")
 const moment = require("moment-timezone")
 const { sizeFormatter } = require("human-readable")
@@ -96,8 +97,10 @@ module.exports = {
     showAdAttribution: true
      }}
            })*/
-           let buffer = await reSize(fs.readFileSync('././lib/media/gta.jpg'), 200, 200)
-           await sock.sendMessage(msg.from, { caption: str, footer: "Rzx Bot", location: { jpegThumbnail: buffer }, buttons: [{ buttonId: ".script", buttonText: { displayText: "Source Code" }, type: 1 }], headerType: 'LOCATION', mentions: [msg.sender] })
+           let buffer = await reSize(fs.readFileSync('././lib/media/rzx.jpg'), 200, 200)
+           //await sock.sendMessage(msg.from, { caption: str, footer: "Rzx Bot", location: { jpegThumbnail: buffer }, buttons: [{ buttonId: ".script", buttonText: { displayText: "Source Code" }, type: 1 }], headerType: 'LOCATION', mentions: [msg.sender] })
+           const template = baileys.generateWAMessageFromContent(from, baileys.proto.Message.fromObject({ templateMessage: { hydratedTemplate: { hydratedContentText: str, locationMessage: { jpegThumbnail: buffer }, hydratedFooterText: "Rzx Bot", hydratedButtons: [{ urlButton: { displayText: 'Group', url: 'https://chat.whatsapp.com/FM1Q7xQJYN5HDSrXvQqMEn' } }] } } }), { userJid: sender, quoted: msg })
+           sock.relayMessage(from, template.message, { messageId: template.key.id } )
         }
     }
 }
