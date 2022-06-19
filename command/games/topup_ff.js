@@ -4,7 +4,7 @@ module.exports = {
    name: 'topup_ff',
    category: 'games',
    use: '<diamond> <id ff>',
-   async exec(msg, sock) {
+   async exec(msg, sock, args) {
       async function topupFF(dm, id) {
          const num = msg.sender.split("@")[0]
          const makeSession = await hikki.game.topupFreeFire(id, dm) // support nominal 5 12 70 140 355 720'
