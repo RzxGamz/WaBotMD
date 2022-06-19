@@ -4,7 +4,7 @@ module.exports = {
    category: 'games',
    desc: 'Topup Game Free Fire',
    use: '<id free fire>',
-   async exec(msg, sock) {
+   async exec(msg, sock, args) {
       const sections = [
     {
 	title: "TOP UP DIAMOND FREE FIRE",
