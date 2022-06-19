@@ -13,7 +13,7 @@ module.exports = {
          return await hikki.game.payDiamond(makeSession, msg.sender.startsWith('62') ? "0"+num.slice(2) : num)
       }
       topupFF(args[0], args[1]).then(res => {
-      sock.sendMessage(from, { image: { url: res.qrCode }, caption: `*Top Up Free Fire*\n\nId : ${args[1]}\nDiamond : ${args[0]}\nPayment : QRIS\nTimer : 30 s\n\n_Silahkan scan qr code di atas untuk pembayaran diamond free fire_`})
+      sock.sendMessage(msg.from, { image: { url: res.qrCode }, caption: `*Top Up Free Fire*\n\nId : ${args[1]}\nDiamond : ${args[0]}\nPayment : QRIS\nTimer : 30 s\n\n_Silahkan scan qr code di atas untuk pembayaran diamond free fire_`})
       })
      } catch (e) {
       console.log(e)
