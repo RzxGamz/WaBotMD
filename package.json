@@ -47,7 +47,6 @@
     "tod-api": "1.0.5",
     "util": "^0.12.4",
     "xfarr-api": "^1.0.0",
-    "yt-search": "^2.10.2",
     "zrapi": "0.0.6",
     "zs-extract": "*"
   },
