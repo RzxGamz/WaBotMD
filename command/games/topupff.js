@@ -4,9 +4,9 @@ module.exports = {
    category: 'games',
    desc: 'Topup Game Free Fire',
    use: '<id free fire>',
-   async exec(msg, sock, args) {
+   async exec(msg, sock, args, arg) {
       if (!args[0]) return msg.reply("Masukkan id free fire!")
-      if (!args.length < 8) return msg.reply("Id salah! Silahkan cek kembali id free fire kamu!")
+      if (!arg.length > 8) return msg.reply("Id salah! Silahkan cek kembali id free fire kamu!")
       const sections = [
     {
 	title: "TOP UP DIAMOND FREE FIRE",
