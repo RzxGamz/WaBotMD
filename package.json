@@ -17,6 +17,7 @@
     "@bochilteam/scraper": "2.0.0",
     "awesome-phonenumber": "^2.64.0",
     "axios": "^0.24.0",
+    "brainly-scraper-v2": "^2.0.13",
     "chalk": "^4.1.2",
     "cheerio": "^1.0.0-rc.10",
     "clui": "^0.3.6",
