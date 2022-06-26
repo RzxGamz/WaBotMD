@@ -9,6 +9,8 @@ module.exports = {
    async exec(msg, sock, args) {
       try {
          if (!args.join(' ')) return msg.reply('Masukkan link facebook!')
+         if (!args.join(' ').includes("facebook")) return msg.reply('Tidak dapat mengambil result dari link itu!')
+         msg.reply("*Loading. . .*")
          hikki.downloader.facebookDownload(args.join(' ')).then(res => {
             const { result } = res
             const { title, hd, sd, audio } = result
