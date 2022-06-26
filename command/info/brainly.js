@@ -12,12 +12,12 @@ module.exports = {
 
          if (args.join(' ').toLowerCase().endsWith("with mt")) {
          brain.searchWithMT(args.join(" "), "id").then(res => {
-            msg.replyAd(res, "Brainly", "Temukan jawabanmu di sini!")
+            msg.replyAd(JSON.stringify(res, null, 2), "Brainly", "Temukan jawabanmu di sini!")
          }).catch(console.error);
          } else {
          // Or (You need to enter correctly country code in the constructor).
          brain.search(args.join(" "), "id").then(res => {
-            msg.replyAd(res, "Brainly", "Temukan jawabanmu di sini!")
+            msg.replyAd(JSON.stringify(res, null, 2), "Brainly", "Temukan jawabanmu di sini!")
          }).catch(console.error);
          }
       } catch (e) {
