@@ -5,7 +5,7 @@ module.exports = {
    desc: 'Mention all member with text',
    use: '<text>',
    async exec(msg, sock, args) {
-      if (!msg.isPrivate) return msg.reply('Khusus owner!')
+      if (!msg.key.fromMe) return msg.reply('Khusus owner!')
 
       const content = JSON.stringify(msg.message)
       const isQuoted = msg.type === 'extendedTextMessage'
