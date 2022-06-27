@@ -17,7 +17,7 @@ module.exports = {
 
       const gcMeta = sock.groupMetadata(msg.from)
       const gcMem = gcMeta.participants
-      allmem = []
+      let allmem = []
       for (let anu of gcMem) {
          allmem.push(anu.id)
       }
