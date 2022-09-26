@@ -13,7 +13,7 @@
   "author": "RzxGamz",
   "license": "MIT",
   "dependencies": {
-    "@adiwajshing/baileys": "git+https://github.com/fdhlgrphy/Baileys.git",
+    "@adiwajshing/baileys": "^4.4.0",
     "@adiwajshing/keyed-db": "^0.2.4",
     "@bochilteam/scraper": "2.0.0",
     "awesome-phonenumber": "^2.64.0",
