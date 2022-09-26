@@ -8,6 +8,7 @@ RUN apt-get update && \
   wget \
   yarn \
   mc \
+  git \
   imagemagick && \
   rm -rf /var/lib/apt/lists/*
 
