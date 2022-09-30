@@ -105,15 +105,9 @@ module.exports = {
            //const template = baileys.generateWAMessageFromContent(msg.from, baileys.proto.Message.fromObject({ templateMessage: { hydratedTemplate: { hydratedContentText: str, locationMessage: { jpegThumbnail: buffer }, hydratedFooterText: "Rzx Bot", hydratedButtons: [{ urlButton: { displayText: 'Group', url: 'https://chat.whatsapp.com/FM1Q7xQJYN5HDSrXvQqMEn' } }] } } }), { userJid: sender, quoted: msg })
            //sock.relayMessage(msg.from, template.message, { messageId: template.key.id } )
            // Document Message
-           img1 = fs.readFileSync('././lib/media/thumb1.jpeg')
-           img2 = fs.readFileSync('././lib/media/thumb2.jpeg')
-           img3 = fs.readFileSync('././lib/media/thumb3.jpeg')
-           img4 = fs.readFileSync('././lib/media/thumb4.jpeg')
-           img5 = fs.readFileSync('././lib/media/thumb5.jpeg')
-           img6 = fs.readFileSync('././lib/media/thumb6.jpeg')
-           let thumbnail = ['img1','img2','img3','img4','img5','img6']
+           let thumbnail = ['fs.readFileSync('././lib/media/thumb1.jpeg')','fs.readFileSync('././lib/media/thumb2.jpeg')','fs.readFileSync('././lib/media/thumb3.jpeg')','fs.readFileSync('././lib/media/thumb4.jpeg')','fs.readFileSync('././lib/media/thumb5.jpeg')','fs.readFileSync('././lib/media/thumb6.jpeg')']
            let pickImg = thumbnail[Math.floor(Math.random() * thumbnail.length)]
-           sock.sendMessage(msg.from, { caption: str, footer: "© 2022 RzxBot", document: pickImg, mimetype: 'application/pdf', fileName: "ʀᴢx ᴡʜᴀᴛsᴀᴘᴘ ʙᴏᴛ", fileLength: "100000000000", pageCount: 1234567890, buttons: [{buttonId:".ping",buttonText:{displayText:"sᴘᴇᴇᴅ"},type:1}], headerType: 'DOCUMENT', contextInfo: { externalAdReply: { title: 'ʀᴢx ᴡʜᴀᴛsᴀᴘᴘ ʙᴏᴛ', body: 'Follow my instagram', mediaUrl: 'https://instagram.com/rzxgamz', mediaType: 1, thumbnail: pickImg, showAdAttribution: true }}})
+           sock.sendMessage(msg.from, { caption: str, footer: "© 2022 RzxBot", document: pickImg, mimetype: 'application/pdf', fileName: "ʀᴢx ᴡʜᴀᴛsᴀᴘᴘ ʙᴏᴛ", fileLength: "100000000000", pageCount: 5000, buttons: [{buttonId:".ping",buttonText:{displayText:"sᴘᴇᴇᴅ"},type:1}], headerType: 'DOCUMENT', contextInfo: { externalAdReply: { title: 'Ryarve Firdausy (@rzxgamz)', body: 'Foto dan video Instagram', mediaUrl: 'https://instagram.com/rzxgamz', mediaType: 2, thumbnail: pickImg, showAdAttribution: true }}})
         }
     }
 }
