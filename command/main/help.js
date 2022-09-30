@@ -81,6 +81,7 @@ module.exports = {
                     .map((cmd) => `≻ ${prefix}`+cmd.name).join('\n')}\n\n`
             }
             str += `_send ${prefix}help followed by a command name to get detail of command, e.g. ${prefix}help sticker_`;
+            // Fake Link Message
             /*await sock.sendMessage(msg.from, {
                 text: str,
                 footer: "WhatsApp Bot",
@@ -98,9 +99,21 @@ module.exports = {
      }}
            })*/
            let buffer = await reSize(fs.readFileSync('././lib/media/rzx.jpg'), 200, 200)
+           // Location Message
            //await sock.sendMessage(msg.from, { caption: str, footer: "Rzx Bot", location: { jpegThumbnail: buffer }, buttons: [{ buttonId: ".script", buttonText: { displayText: "Source Code" }, type: 1 }], headerType: 'LOCATION', mentions: [msg.sender] })
-           const template = baileys.generateWAMessageFromContent(msg.from, baileys.proto.Message.fromObject({ templateMessage: { hydratedTemplate: { hydratedContentText: str, locationMessage: { jpegThumbnail: buffer }, hydratedFooterText: "Rzx Bot", hydratedButtons: [{ urlButton: { displayText: 'Group', url: 'https://chat.whatsapp.com/FM1Q7xQJYN5HDSrXvQqMEn' } }] } } }), { userJid: sender, quoted: msg })
-           sock.relayMessage(msg.from, template.message, { messageId: template.key.id } )
+           // Location Message
+           //const template = baileys.generateWAMessageFromContent(msg.from, baileys.proto.Message.fromObject({ templateMessage: { hydratedTemplate: { hydratedContentText: str, locationMessage: { jpegThumbnail: buffer }, hydratedFooterText: "Rzx Bot", hydratedButtons: [{ urlButton: { displayText: 'Group', url: 'https://chat.whatsapp.com/FM1Q7xQJYN5HDSrXvQqMEn' } }] } } }), { userJid: sender, quoted: msg })
+           //sock.relayMessage(msg.from, template.message, { messageId: template.key.id } )
+           // Document Message
+           img1 = fs.readFileSync('././lib/media/thumb1.jpeg')
+           img2 = fs.readFileSync('././lib/media/thumb2.jpeg')
+           img3 = fs.readFileSync('././lib/media/thumb3.jpeg')
+           img4 = fs.readFileSync('././lib/media/thumb4.jpeg')
+           img5 = fs.readFileSync('././lib/media/thumb5.jpeg')
+           img6 = fs.readFileSync('././lib/media/thumb6.jpeg')
+           let thumbnail = ['img1','img2','img3','img4','img5','img6']
+           let pickImg = thumbnail[Math.floor(Math.random() * thumbnail.length)]
+           sock.sendMessage(msg.from, { caption: str, footer: "© 2022 RzxBot", document: pickImg, mimetype: 'application/pdf', fileName: "ʀᴢx ᴡʜᴀᴛsᴀᴘᴘ ʙᴏᴛ", fileLength: "100000000000", pageCount: 1234567890, buttons: [{buttonId:".ping",buttonText:{displayText:"sᴘᴇᴇᴅ"},type:1}], headerType: 'DOCUMENT', contextInfo: { externalAdReply: { title: 'ʀᴢx ᴡʜᴀᴛsᴀᴘᴘ ʙᴏᴛ', body: 'Follow my instagram', mediaUrl: 'https://instagram.com/rzxgamz', mediaType: 1, thumbnail: pickImg, showAdAttribution: true }}})
         }
     }
 }
