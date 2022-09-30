@@ -105,9 +105,9 @@ module.exports = {
            //const template = baileys.generateWAMessageFromContent(msg.from, baileys.proto.Message.fromObject({ templateMessage: { hydratedTemplate: { hydratedContentText: str, locationMessage: { jpegThumbnail: buffer }, hydratedFooterText: "Rzx Bot", hydratedButtons: [{ urlButton: { displayText: 'Group', url: 'https://chat.whatsapp.com/FM1Q7xQJYN5HDSrXvQqMEn' } }] } } }), { userJid: sender, quoted: msg })
            //sock.relayMessage(msg.from, template.message, { messageId: template.key.id } )
            // Document Message
-           let thumbnail = [`fs.readFileSync('././lib/media/thumb1.jpeg')`,`fs.readFileSync('././lib/media/thumb2.jpeg')`,`fs.readFileSync('././lib/media/thumb3.jpeg')`,`fs.readFileSync('././lib/media/thumb4.jpeg')`,`fs.readFileSync('././lib/media/thumb5.jpeg')`,`fs.readFileSync('././lib/media/thumb6.jpeg')`]
+           let thumbnail = ['https://i.ibb.co/vXJjPfY/thumb1.jpg','https://i.ibb.co/mSvWTsL/thumb2.jpg','https://i.ibb.co/yyxDgyr/thumb3.jpg','https://i.ibb.co/M7XsF50/thumb4.jpg','https://i.ibb.co/02xQ6NR/thumb5.jpg','https://i.ibb.co/GR3VD6K/thumb6.jpg']
            let pickImg = thumbnail[Math.floor(Math.random() * thumbnail.length)]
-           sock.sendMessage(msg.from, { caption: str, footer: "© 2022 RzxBot", document: pickImg, mimetype: 'application/pdf', fileName: "ʀᴢx ᴡʜᴀᴛsᴀᴘᴘ ʙᴏᴛ", fileLength: "100000000000", pageCount: 5000, buttons: [{buttonId:".ping",buttonText:{displayText:"sᴘᴇᴇᴅ"},type:1}], headerType: 'DOCUMENT', contextInfo: { externalAdReply: { title: 'Ryarve Firdausy (@rzxgamz)', body: 'Foto dan video Instagram', mediaUrl: 'https://instagram.com/rzxgamz', mediaType: 2, thumbnail: pickImg, showAdAttribution: true }}})
+           sock.sendMessage(msg.from, { caption: str, footer: "© 2022 RzxBot", document: fs.readFileSync('././lib/media/thumb6.jpeg'), mimetype: 'application/pdf', fileName: "ʀᴢx ᴡʜᴀᴛsᴀᴘᴘ ʙᴏᴛ", fileLength: "100000000000", pageCount: 5000, buttons: [{buttonId:".ping",buttonText:{displayText:"sᴘᴇᴇᴅ"},type:1}], headerType: 'DOCUMENT', contextInfo: { externalAdReply: { title: 'Ryarve Firdausy (@rzxgamz)', body: 'Foto dan video Instagram', mediaUrl: 'https://instagram.com/rzxgamz', mediaType: 2, thumbnailUrl: pickImg, showAdAttribution: true }}})
         }
     }
 }
