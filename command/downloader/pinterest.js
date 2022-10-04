@@ -1,4 +1,4 @@
-const { fetchJson } = require('../../lib/function/func.js)
+const { fetchJson } = require('../../lib/function/func.js')
 
 module.exports = {
    name: 'pinterestdl',
