@@ -16,7 +16,7 @@ module.exports = {
         const { dl_link, thumb, title, filesizeF, filesize } = res
         sock.sendFileFromUrl(msg.from, thumb, `YOUTUBE VIDEO\n\n${String.fromCharCode(8206).repeat(4001)}${JSON.stringify(res, null, 2)}`, msg)
         sock.sendMessage(msg.from, { video: { url: dl_link } }, { quoted: msg })*/
-        const res = ca.downloader.youtube.ytmp4(args[0])
+        const res = await ca.downloader.youtube.ytmp4(args[0])
         const capt = `*Youtube Mp4*\n\n• Title: ${res.title}\n• Channel: ${res.channel}\n• Quality: ${res.quality}\n• Upload: ${res.uploadDate}\n• Desc: ${res.desc}`
         sock.sendMessage(msg.from, { caption: capt, document: { url: res.result }, mimetype: 'video/mp4', fileName: res.title+'.mp4' }, { quoted: msg })
       } catch (e) {
