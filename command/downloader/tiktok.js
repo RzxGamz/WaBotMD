@@ -1,5 +1,4 @@
-const { tiktokdl, tiktokdlv2, tiktokdlv3 } = require('@bochilteam/scraper')
-const { ttdownloader } = require('hxz-api')
+const ca = require('caliph-api')
 
 module.exports = {
   name: 'tiktok',
@@ -17,18 +16,18 @@ module.exports = {
       let capt
       switch (opt) {
         case '--video':
-          res = await tiktokdl(args[0])
-          capt = `*TIKTOK DOWNLOADER*\n\n${String.fromCharCode(8206).repeat(4001)}`+JSON.stringify(res, null, 2)
-          await sock.sendFileFromUrl(msg.from, res.video.no_watermark, capt, msg)
+          res = await ca.downloader.tiktok(args[0])
+          capt = `*Tiktok Downloader*\n\n• Title : ${res.title}\n• Author : ${res.author}`
+          await sock.sendMessage(msg.from, { caption: capt, document: { url: res.nowm }, mimetype: 'video/mp4', fileName: res.title+'.mp4' }, { quoted: msg })
           break
         case '--audio':
-          let resm = await ttdownloader(args[0])
-          await sock.sendMessage(msg.from, { audio: { url: resm.audio }, mimetype: 'audio/mp4' }, { quoted: msg })
+          let resm = await ca.downloader.tiktok(args[0])
+          await sock.sendMessage(msg.from, { caption: resm.title, document: { url: resm.audio }, mimetype: 'audio/mp3', fileName: resm.title+'.mp3' }, { quoted: msg })
           break
         default:
-          res = await tiktokdl(args[0])
-          capt = `*TIKTOK DOWNLOADER*\n\n${String.fromCharCode(8206).repeat(4001)}`+JSON.stringify(res, null, 2)
-          await sock.sendFileFromUrl(msg.from, res.video.no_watermark, capt, msg)
+          res = await ca.downloader.tiktok(args[0])
+          capt = `*Tiktok Downloader*\n\n• Title : ${res.title}\n• Author : ${res.author}`
+          await sock.sendMessage(msg.from, { caption: capt, document: { url: res.nowm }, mimetype: 'video/mp4', fileName: res.title+'.mp4' }, { quoted: msg })
       }
     } catch (e) {
       msg.reply(e.message)
