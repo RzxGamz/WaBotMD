@@ -99,7 +99,6 @@ module.exports = {
      }}
            })*/
            const timez = moment().tz('Asia/Jakarta').format('HH:mm:ss')
-           let buffer;
            if (timez < "04:00:00") {
                buffer = await reSize(fs.readFileSync('././lib/media/malam.jpg'), 200, 200)
            } 
