@@ -99,20 +99,20 @@ module.exports = {
      }}
            })*/
            const timez = moment().tz('Asia/Jakarta').format('HH:mm:ss')
-           if (timez < 04:00:00) {
-               buffer = await reSize(fs.readFileSync('././lib/media/malam.jpg'), 200, 200)
+           if (timez < "04:00:00") {
+               let buffer = await reSize(fs.readFileSync('././lib/media/malam.jpg'), 200, 200)
            } 
-           if (timez < 10:00:00) {
-               buffer = await reSize(fs.readFileSync('././lib/media/pagi.jpg'), 200, 200)
+           if (timez < "10:00:00") {
+               let buffer = await reSize(fs.readFileSync('././lib/media/pagi.jpg'), 200, 200)
            } 
-           if (timez < 14:30:00) {
-               buffer = await reSize(fs.readFileSync('././lib/media/siang.jpg'), 200, 200)
+           if (timez < "14:30:00") {
+               let buffer = await reSize(fs.readFileSync('././lib/media/siang.jpg'), 200, 200)
            } 
-           if (timez < 18:00:00) {
-               buffer = await reSize(fs.readFileSync('././lib/media/sore.jpg'), 200, 200)
+           if (timez < "18:00:00") {
+               let buffer = await reSize(fs.readFileSync('././lib/media/sore.jpg'), 200, 200)
            } 
-           if (timez < 23:59:00) {
-               buffer = await reSize(fs.readFileSync('././lib/media/malam.jpg'), 200, 200)
+           if (timez < "23:59:00") {
+               let buffer = await reSize(fs.readFileSync('././lib/media/malam.jpg'), 200, 200)
            }
            // Location Message
            //await sock.sendMessage(msg.from, { caption: str, footer: "Rzx Bot", location: { jpegThumbnail: buffer }, buttons: [{ buttonId: ".script", buttonText: { displayText: "Source Code" }, type: 1 }], headerType: 'LOCATION', mentions: [msg.sender] })
