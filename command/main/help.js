@@ -99,20 +99,21 @@ module.exports = {
      }}
            })*/
            const timez = moment().tz('Asia/Jakarta').format('HH:mm:ss')
+           const bupper;
            if (timez < "04:00:00") {
-               let bupper = "https://i.ibb.co/PTzjXbY/malam.jpg"
+               bupper = "https://i.ibb.co/PTzjXbY/malam.jpg"
            }
            if (timez < "10:00:00") {
-               let bupper = "https://i.ibb.co/DfCkTP0/pagi.jpg"
+               bupper = "https://i.ibb.co/DfCkTP0/pagi.jpg"
            } 
            if (timez < "14:30:00") {
-               let bupper = "https://i.ibb.co/C0HSjpd/siang.jpg"
+               bupper = "https://i.ibb.co/C0HSjpd/siang.jpg"
            } 
            if (timez < "18:00:00") {
-               let bupper = "https://i.ibb.co/RDq3hpK/sore.jpg"
+               bupper = "https://i.ibb.co/RDq3hpK/sore.jpg"
            } 
            if (timez < "23:59:00") {
-               let bupper = "https://i.ibb.co/PTzjXbY/malam.jpg"
+               bupper = "https://i.ibb.co/PTzjXbY/malam.jpg"
            }
            const buffer = await reSize(bupper, 200, 200)
            // Location Message
