@@ -99,7 +99,7 @@ module.exports = {
      }}
            })*/
            const timez = moment().tz('Asia/Jakarta').format('HH:mm:ss')
-           const bupper;
+           let bupper;
            if (timez < "04:00:00") {
                bupper = "https://i.ibb.co/PTzjXbY/malam.jpg"
            }
