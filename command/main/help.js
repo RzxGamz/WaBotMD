@@ -98,23 +98,7 @@ module.exports = {
     showAdAttribution: true
      }}
            })*/
-           const timez = moment().tz('Asia/Jakarta').format('HH:mm:ss')
-           /*if (timez < "04:00:00") {
-               global.bupper = "https://i.ibb.co/PTzjXbY/malam.jpg"
-           }
-           if (timez < "10:00:00") {
-               global.bupper = "https://i.ibb.co/DfCkTP0/pagi.jpg"
-           } 
-           if (timez < "14:30:00") {
-               global.bupper = "https://i.ibb.co/C0HSjpd/siang.jpg"
-           } 
-           if (timez < "18:00:00") {
-               global.bupper = "https://i.ibb.co/RDq3hpK/sore.jpg"
-           } 
-           if (timez < "23:59:00") {
-               global.bupper = "https://i.ibb.co/PTzjXbY/malam.jpg"
-           }*/
-           const buffer = await reSize(fs.readFileSync('././lib/media/pagi.jpg'), 200, 200)
+           let buffer = await reSize(fs.readFileSync('././lib/media/pagi.jpg'), 200, 200)
            // Location Message
            //await sock.sendMessage(msg.from, { caption: str, footer: "Rzx Bot", location: { jpegThumbnail: buffer }, buttons: [{ buttonId: ".script", buttonText: { displayText: "Source Code" }, type: 1 }], headerType: 'LOCATION', mentions: [msg.sender] })
            // Location Message
