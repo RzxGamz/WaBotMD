@@ -98,17 +98,22 @@ module.exports = {
     showAdAttribution: true
      }}
            })*/
+           let buff1 = await reSize(fs.readFileSync('././lib/media/malam.jpg'), 200, 200)
+           let buff2 = await reSize(fs.readFileSync('././lib/media/pagi.jpg'), 200, 200)
+           let buff3 = await reSize(fs.readFileSync('././lib/media/siang.jpg'), 200, 200)
+           let buff4 = await reSize(fs.readFileSync('././lib/media/sore.jpg'), 200, 200)
+           let buff5 = await reSize(fs.readFileSync('././lib/media/malam.jpg'), 200, 200)
            const timez = moment().tz('Asia/Jakarta').format('HH:mm:ss')
            if (timez < "04:00:00") {
-               buffer = await reSize(fs.readFileSync('././lib/media/malam.jpg'), 200, 200)
+               buffer = buff1
            } else if (timez < "10:00:00") {
-               buffer = await reSize(fs.readFileSync('././lib/media/pagi.jpg'), 200, 200)
+               buffer = buff2
            } else if (timez < "14:30:00") {
-               buffer = await reSize(fs.readFileSync('././lib/media/siang.jpg'), 200, 200)
+               buffer = buff3
            } else if (timez < "18:00:00") {
-               buffer = await reSize(fs.readFileSync('././lib/media/sore.jpg'), 200, 200)
+               buffer = buff4
            } else if (timez < "23:59:00") {
-               buffer = await reSize(fs.readFileSync('././lib/media/malam.jpg'), 200, 200)
+               buffer = buff5
            }
            // Location Message
            //await sock.sendMessage(msg.from, { caption: str, footer: "Rzx Bot", location: { jpegThumbnail: buffer }, buttons: [{ buttonId: ".script", buttonText: { displayText: "Source Code" }, type: 1 }], headerType: 'LOCATION', mentions: [msg.sender] })
