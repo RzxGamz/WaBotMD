@@ -4,7 +4,7 @@ const moment = require("moment-timezone")
 const { sizeFormatter } = require("human-readable")
 const fs = require("fs")
 const jimp = require("jimp")
-const ucap = "Selamat "+ moment(Date.now()).tz('Asia/Jakarta').locale('id').format('a')
+const ucap = "Selamat "+ moment(Date.now()).tz('Asia/Jakarta').locale('uk').format('a')
 
 const countDownDate = new Date("January, 01, 2023 00:00:01").getTime();
 const now = new Date(new Date().getTime() + 25200000).getTime();
@@ -73,7 +73,7 @@ module.exports = {
                 }
             }
             let cB = await cekBandwidth()
-            let str = `*Hello, ${pushName === undefined ? sender.split("@")[0] : pushName}*\n*${ucap}*\n\n*Menuju Tahun Baru 2023*\n${resCountDown}\n\n*STATISTIC*\n*Upload ${cB.upload}*\n*Download ${cB.download}*\n\n`;
+            let str = `*Hello, ${pushName === undefined ? sender.split("@")[0] : pushName}*\n*${ucap}*\n\n*Countdown To New Year 2023*\n${resCountDown}\n\n*Statistic*\n*Upload ${cB.upload}*\n*Download ${cB.download}*\n\n`;
             const keys = Object.keys(category);
             for (const key of keys) {
             	let anu = key[0].toUpperCase()
@@ -113,7 +113,7 @@ module.exports = {
            // Location Message
            //await sock.sendMessage(msg.from, { caption: str, footer: "Rzx Bot", location: { jpegThumbnail: buffer }, buttons: [{ buttonId: ".script", buttonText: { displayText: "Source Code" }, type: 1 }], headerType: 'LOCATION', mentions: [msg.sender] })
            // Location Message
-           const template = baileys.generateWAMessageFromContent(msg.from, baileys.proto.Message.fromObject({ templateMessage: { hydratedTemplate: { hydratedContentText: str, locationMessage: { jpegThumbnail: buffer }, hydratedFooterText: "Rzx Bot", hydratedButtons: [{ urlButton: { displayText: 'Group', url: 'https://chat.whatsapp.com/FM1Q7xQJYN5HDSrXvQqMEn' } },{ urlButton: { displayText: 'Instagram', url: 'https://instagram.com/rzxgamz' }}] } } }), { userJid: sender, quoted: msg })
+           const template = baileys.generateWAMessageFromContent(msg.from, baileys.proto.Message.fromObject({ templateMessage: { hydratedTemplate: { hydratedContentText: str, locationMessage: { jpegThumbnail: buffer }, hydratedFooterText: "Rzx Bot", hydratedButtons: [{ urlButton: { displayText: 'Group', url: 'https://chat.whatsapp.com/FM1Q7xQJYN5HDSrXvQqMEn' } }] } } }), { userJid: sender, quoted: msg })
            sock.relayMessage(msg.from, template.message, { messageId: template.key.id } )
            // Document Message
            //let thumbnail = ['https://i.ibb.co/vXJjPfY/thumb1.jpg','https://i.ibb.co/mSvWTsL/thumb2.jpg','https://i.ibb.co/yyxDgyr/thumb3.jpg','https://i.ibb.co/M7XsF50/thumb4.jpg','https://i.ibb.co/02xQ6NR/thumb5.jpg','https://i.ibb.co/GR3VD6K/thumb6.jpg']
