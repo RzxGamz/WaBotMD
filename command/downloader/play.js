@@ -10,7 +10,11 @@ module.exports = {
       if (!args.join(' ')) return msg.reply('Masukkan judul video yang ingin kamu download!')
       try {
          const res = await bs.youtubeSearch(args.join(' '))
-         await sock.sendMessage(msg.from, { text: `*YouTube Play*\n\nTitle: ${res.video[0].title}\nChannel: ${res.video[0].authorName}\nDuration: ${res.video[0].durationH}\nView: ${res.video[0].viewH}\nUpload: ${res.video[0].publishedTime}\nUrl: ${res.video[0].url}\nDescription: ${res.video[0].description}\n\n_Silahkan pilih button di bawah untuk download_`, imageMessage: { url: res.video[0].thumbnail }, footer: "Rzx Bot", templateButtons: [{ urlButton: { displayText: 'YouTube', url: `${res.video[0].url}` }},{ quickReplyButton: { displayText: 'Video', id: `.ytmp4 ${res.video[0].url}` }},{ quickReplyButton: { displayText: 'Audio', id: `.ytmp3 ${res.video[0].url}` }}] }, { quoted: msg })
+         const buttons = [
+             {buttonId: `.ytmp4 ${res.video[0].url}`, buttonText: {displayText: 'VIDEO'}, type: 1},
+             {buttonId: `.ytmp3 ${res.video[0].url}`, buttonText: {displayText: 'AUDIO'}, type: 1}
+         ]
+         await sock.sendMessage(msg.from, { caption: `*YouTube Play*\n\nTitle: ${res.video[0].title}\nChannel: ${res.video[0].authorName}\nDuration: ${res.video[0].durationH}\nView: ${res.video[0].viewH}\nUpload: ${res.video[0].publishedTime}\nUrl: ${res.video[0].url}\nDescription: ${res.video[0].description}\n\n_Silahkan pilih button di bawah untuk download_`, image: { url: res.video[0].thumbnail }, footer: "Rzx Bot", buttons: buttons, headerType: 4 }, { quoted: msg })
       } catch (e) {
        console.log(e)
     }
