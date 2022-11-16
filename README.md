@@ -79,6 +79,8 @@ npm start
 node .
 ```
 
+# How To Scan QR Code
+https://user-images.githubusercontent.com/97107434/202102829-cc4bd366-fa0e-4c3b-9449-dfc59b7e7c61.mp4
 
 # Thanks To
 
