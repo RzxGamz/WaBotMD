@@ -4,16 +4,36 @@ const moment = require("moment-timezone")
 const { sizeFormatter } = require("human-readable")
 const fs = require("fs")
 const jimp = require("jimp")
-const ucap = "Selamat "+ moment(Date.now()).tz('Asia/Jakarta').locale('id').format('a')
 
-const countDownDate = new Date("January, 01, 2023 00:00:01").getTime();
-const now = new Date(new Date().getTime() + 25200000).getTime();
-const distance = countDownDate - now;
-const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-const resCountDown = `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`
+let countDownDate = new Date("April, 21, 2023 18:00:00").getTime();
+let now = new Date(new Date().getTime() + 25200000).getTime();
+let distance = countDownDate - now;
+let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+let resCountDown = `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`
+
+let ucap = "Selamat "+ moment(Date.now()).tz('Asia/Jakarta').locale('id').format('a')
+let d = new Date(new Date + 3600000)
+let locale = 'id'
+let weton = ['Pahing', 'Pon', 'Wage', 'Kliwon', 'Legi'][Math.floor(d / 84600000) % 5]
+let week = d.toLocaleDateString(locale, { weekday: 'long' })
+let date = d.toLocaleDateString(locale, {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+})
+let dateIslam = Intl.DateTimeFormat(locale + '-TN-u-ca-islamic', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+}).format(d)
+let times = d.toLocaleTimeString(locale, {
+            hour: 'numeric',
+            minute: 'numeric',
+            second: 'numeric'
+})
 
 const formatd = sizeFormatter({
 std: "JEDEC", // 'SI' (default) | 'IEC' | 'JEDEC'
@@ -72,8 +92,9 @@ module.exports = {
                     category[info.category].push(info);
                 }
             }
-            let cB = await cekBandwidth()
-            let str = `*Hello, ${pushName === undefined ? sender.split("@")[0] : pushName}*\n*${ucap}*\n\n*Countdown To New Year 2023*\n${resCountDown}\n\n*Statistic*\n*Upload ${cB.upload}*\n*Download ${cB.download}*\n\n`;
+            //let cB = await cekBandwidth()
+            let str = `*Hello, ${pushName === undefined ? sender.split("@")[0] : pushName}*\n*${ucap}*\n\n*• Countdown To Eid Al-Fitr 1444 H*\n${resCountDown}\n\n*• Date Islamic*\n${dateIslam}\n\n*• Date*\n${week} ${weton}, ${date}\n\n*• Time*\n${times} WIB\n`;
+            str += String.fromCharCode(8206).repeat(4001) + '\n\n';
             const keys = Object.keys(category);
             for (const key of keys) {
             	let anu = key[0].toUpperCase()
@@ -81,33 +102,26 @@ module.exports = {
                     .map((cmd) => `≻ ${prefix}`+cmd.name).join('\n')}\n\n`
             }
             str += `_send ${prefix}help followed by a command name to get detail of command, e.g. ${prefix}help sticker_`;
-            // Fake Link Message
-            /*await sock.sendMessage(msg.from, {
-                text: str,
-                footer: "WhatsApp Bot",
-                contextInfo: { 
-    mentionedJid: [msg.sender],
-    externalAdReply: {
-    mediaUrl: `https://instagram.com`,
-    mediaType: 2,
-    description: '', 
-    title: 'WhatsApp Bot',
-    body: '', 
-    thumbnail: fs.readFileSync('././lib/media/program.jpg'),
-    sourceUrl: `https://chat.whatsapp.com/FM1Q7xQJYN5HDSrXvQqMEn`,
-    showAdAttribution: true
-     }}
-           })*/
-           //let buffer = await reSize(fs.readFileSync('././lib/media/rzx.jpg'), 200, 200)
-           // Location Message
-           //await sock.sendMessage(msg.from, { caption: str, footer: "Rzx Bot", location: { jpegThumbnail: buffer }, buttons: [{ buttonId: ".script", buttonText: { displayText: "Source Code" }, type: 1 }], headerType: 'LOCATION', mentions: [msg.sender] })
-           // Location Message
-           //const template = baileys.generateWAMessageFromContent(msg.from, baileys.proto.Message.fromObject({ templateMessage: { hydratedTemplate: { hydratedContentText: str, locationMessage: { jpegThumbnail: buffer }, hydratedFooterText: "Rzx Bot", hydratedButtons: [{ urlButton: { displayText: 'Group', url: 'https://chat.whatsapp.com/FM1Q7xQJYN5HDSrXvQqMEn' } }] } } }), { userJid: sender, quoted: msg })
-           //sock.relayMessage(msg.from, template.message, { messageId: template.key.id } )
-           // Document Message
-           //let thumbnail = ['https://i.ibb.co/vXJjPfY/thumb1.jpg','https://i.ibb.co/mSvWTsL/thumb2.jpg','https://i.ibb.co/yyxDgyr/thumb3.jpg','https://i.ibb.co/M7XsF50/thumb4.jpg','https://i.ibb.co/02xQ6NR/thumb5.jpg','https://i.ibb.co/GR3VD6K/thumb6.jpg']
-           //let pickImg = thumbnail[Math.floor(Math.random() * thumbnail.length)]
-           sock.sendMessage(msg.from, { caption: str, footer: "Rzx Bot", document: fs.readFileSync('././lib/media/wa.jpg'), mimetype: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', fileName: "ʀᴢx ᴡʜᴀᴛsᴀᴘᴘ ʙᴏᴛ", fileLength: "100000000000", pageCount: 5000, buttons: [{buttonId:"IDBUTTON",buttonText:{displayText:"Created By RzxGamz"},type:1}], headerType: 'DOCUMENT', contextInfo: { externalAdReply: { title: 'Ryarve Firdausy (@rzxgamz)', body: 'ʀᴢxʙᴏᴛ@ᴠ1.5.0', mediaUrl: 'https://instagram.com/rzxgamz', mediaType: 2, thumbnail: fs.readFileSync('././lib/media/wa.jpg'), showAdAttribution: true }}})
+            /* Fake Link Message
+            await sock.sendMessage(msg.from, { text: str, footer: "WhatsApp Bot", contextInfo: { mentionedJid: [msg.sender], externalAdReply: { mediaUrl: `https://instagram.com`, mediaType: 2, description: '', title: 'WhatsApp Bot', body: '', thumbnail: fs.readFileSync('././lib/media/program.jpg'), sourceUrl: `https://chat.whatsapp.com/FM1Q7xQJYN5HDSrXvQqMEn`, showAdAttribution: true }}})
+            */
+            //let buffer = await reSize(fs.readFileSync('././lib/media/code.jpg'), 200, 200)
+            /* Location Message
+            await sock.sendMessage(msg.from, { caption: str, footer: "Rzx Bot", location: { jpegThumbnail: buffer }, buttons: [{ buttonId: ".script", buttonText: { displayText: "Source Code" }, type: 1 }], headerType: 'LOCATION', mentions: [msg.sender] })
+            */
+            /* Location Message
+            const template = baileys.generateWAMessageFromContent(msg.from, baileys.proto.Message.fromObject({ templateMessage: { hydratedTemplate: { hydratedContentText: str, locationMessage: { jpegThumbnail: buffer }, hydratedFooterText: "Rzx Bot", hydratedButtons: [{ urlButton: { displayText: 'Group', url: 'https://chat.whatsapp.com/FM1Q7xQJYN5HDSrXvQqMEn' } }] } } }), { userJid: sender, quoted: msg })
+            sock.relayMessage(msg.from, template.message, { messageId: template.key.id } )
+            */
+            /* Document Message
+            let thumbnail = ['https://i.ibb.co/vXJjPfY/thumb1.jpg','https://i.ibb.co/mSvWTsL/thumb2.jpg','https://i.ibb.co/yyxDgyr/thumb3.jpg','https://i.ibb.co/M7XsF50/thumb4.jpg','https://i.ibb.co/02xQ6NR/thumb5.jpg','https://i.ibb.co/GR3VD6K/thumb6.jpg']
+            let pickImg = thumbnail[Math.floor(Math.random() * thumbnail.length)]
+            sock.sendMessage(msg.from, { caption: str, footer: "Rzx Bot", document: fs.readFileSync('././lib/media/wa.jpg'), mimetype: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', fileName: "ʀᴢx ᴡʜᴀᴛsᴀᴘᴘ ʙᴏᴛ", fileLength: "100000000000", pageCount: 5000, buttons: [{buttonId:"IDBUTTON",buttonText:{displayText:"Created By RzxGamz"},type:1}], headerType: 'DOCUMENT', contextInfo: { externalAdReply: { title: 'Ryarve Firdausy (@rzxgamz)', body: 'ʀᴢxʙᴏᴛ@ᴠ1.5.0', mediaUrl: 'https://instagram.com/rzxgamz', mediaType: 2, thumbnail: fs.readFileSync('././lib/media/wa.jpg'), showAdAttribution: true }}})
+            */
+            /* Live Location Message
+            sock.sendMessageFromContent(msg.from, { liveLocationMessage: { degreesLatitude: 37.2793760, degreesLongitude: 127.0051140, caption: str, sequenceNumber: '0', contextInfo: { externalAdReply: { showAdAttribution: true }} }})
+            */
+            sock.sendMessage(msg.from, { document: fs.readFileSync('././lib/media/menu.pdf'), caption: str, fileName: "ʀᴢx ᴡʜᴀᴛsᴀᴘᴘ ʙᴏᴛ", fileLength: "100000000", pageCount: 45, contextInfo: { externalAdReply: { showAdAttribution: true }}})
         }
     }
 }
